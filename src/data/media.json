@@ -1,0 +1,11 @@
+{
+  "videos": [
+    { "title": "שיעור בפרשת השבוע", "youtube_id": "" },
+    { "title": "עיון בגמרא – מסכת ברכות", "youtube_id": "" },
+    { "title": "הלכה יומית", "youtube_id": "" }
+  ],
+  "links": [
+    { "title": "שיעור בפרקי אבות – פרק א", "url": "https://www.youtube.com" },
+    { "title": "הלכות שבת – חלק א", "url": "https://www.youtube.com" }
+  ]
+}

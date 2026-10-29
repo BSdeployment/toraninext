@@ -1,0 +1,70 @@
+/* === Cards === */
+.card-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.card__title a { color: var(--color-primary); }
+.card__title a:hover { color: var(--color-primary-light); }
+
+.card__meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.card__excerpt {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.card__link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.card__link:hover { color: var(--color-accent); }
+
+/* === Tags === */
+
+.post-content-font, .post-content-font * {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1em;
+}
+
+
+.tag {
+  display: inline-block;
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.15rem 0.6rem;
+  border-radius: 99px;
+  margin-left: 0.35rem;
+}
+
+.post-full__tags { margin-top: 0.75rem; }
+
+.hebrew-date{
+  font-weight: bold;
+  padding-bottom: 10px;
+
+}

@@ -1,0 +1,47 @@
+/* === Post Full === */
+.post-full { max-width: var(--container); margin: 0 auto; padding: 0 1.25rem; }
+.post-full__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.post-full__header h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--color-primary);
+}
+.post-full__header time {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.prose { font-size: 1.05rem; line-height: 1.9; }
+.prose h2 { font-size: 1.4rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--color-primary); }
+.prose h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; color: var(--color-primary); }
+.prose p { margin-bottom: 1.25rem; }
+.prose blockquote {
+  border-right: 3px solid var(--color-accent);
+  padding-right: 1rem;
+  margin: 1.5rem 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.prose ul, .prose ol { padding-right: 1.5rem; margin-bottom: 1.25rem; }
+.prose li { margin-bottom: 0.35rem; }
+
+/* === Page === */
+.page-content { max-width: var(--container); margin: 0 auto; padding: 0 1.25rem; }
+.page-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 600px) {
+  .page-title, .post-full__header h1 { font-size: 1.6rem; }
+}

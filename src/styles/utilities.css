@@ -1,0 +1,40 @@
+/* מחלקות עזר שהחליפו inline styles בתבניות המקוריות */
+
+.contact-info--centered {
+  max-width: max-content;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.header-actions .theme-toggle--print { margin: 0 10px; }
+
+.post-pdf-link { margin-top: 20px; font-weight: bold; }
+
+.media-card__placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-tag-bg);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* מוסתר ויזואלית, נשאר זמין לקוראי מסך */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,46 @@
+/* === Media === */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.media-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.media-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.media-card iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  display: block;
+}
+.media-card__body { padding: 1rem; }
+.media-card__title { font-size: 1rem; font-weight: 600; }
+
+.media-list { margin-top: 2.5rem; }
+.media-list-item {
+  display: block;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.media-list-item:hover {
+  box-shadow: var(--shadow-sm);
+  color: var(--color-primary);
+  transform: translateX(-4px);
+}
+
+@media (max-width: 600px) {
+  .media-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,30 @@
+/* נקודת הכניסה היחידה ל-CSS של האתר. הסדר כאן = סדר ה-cascade. */
+
+/* פונט Heebo (מתארח עצמית דרך @fontsource, כולל עברית) */
+@import "@fontsource/heebo/hebrew-300.css";
+@import "@fontsource/heebo/hebrew-400.css";
+@import "@fontsource/heebo/hebrew-500.css";
+@import "@fontsource/heebo/hebrew-700.css";
+@import "@fontsource/heebo/hebrew-900.css";
+@import "@fontsource/heebo/latin-300.css";
+@import "@fontsource/heebo/latin-400.css";
+@import "@fontsource/heebo/latin-500.css";
+@import "@fontsource/heebo/latin-700.css";
+@import "@fontsource/heebo/latin-900.css";
+
+@import "../styles/tokens.css";
+@import "../styles/base.css";
+@import "../styles/header.css";
+@import "../styles/layout.css";
+@import "../styles/home.css";
+@import "../styles/cards.css";
+@import "../styles/post.css";
+@import "../styles/search.css";
+@import "../styles/books.css";
+@import "../styles/media.css";
+@import "../styles/contact.css";
+@import "../styles/pagination.css";
+@import "../styles/animations.css";
+@import "../styles/hero.css";
+@import "../styles/library.css";
+@import "../styles/utilities.css";
