@@ -8,11 +8,17 @@ import type { NextConfig } from "next";
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const isGitHubPages =
+  process.env.DEPLOY_TARGET === "github";
+
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true, // /articles/ => articles/index.html (כמו ב-Jekyll)
   basePath,
-  images: { unoptimized: true }, // נדרש לייצוא סטטי
+  images: { unoptimized: true },// נדרש לייצוא סטטי
+  ...(isGitHubPages
+    ? { basePath: "/toraninext" }
+    : {}),
 };
 
 export default nextConfig;
