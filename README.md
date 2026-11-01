@@ -67,3 +67,5 @@ scripts/generate-redirects.mjs   הפניות מכתובות Jekyll הישנות
 
 - **Cloudflare Pages:** Build command: `npm run build`, Output directory: `out`.
 - **GitHub Pages / אחר:** מעלים את תוכן `out/`.
+
+### בהצלחה
