@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ArticlesPage() {
  const posts = getAllPosts().filter(
-  (a) => a.isFullArticale === undefined || a.isFullArticale === "true"
+  (a) => a.isFullArticle === undefined || a.isFullArticle === "true"
 );
 
 

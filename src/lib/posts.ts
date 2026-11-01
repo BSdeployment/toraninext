@@ -72,7 +72,7 @@ function readPostFile(file: string): LoadedPost | null {
       tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
       excerpt,
       pdfLink: typeof data.pdf_link === "string" ? data.pdf_link : undefined,
-      ...(data.isFullArticale !== undefined && { isFullArticale: String(data.isFullArticale) }),
+      ...(data.isFullArticle !== undefined && { isFullArticle: String(data.isFullArticle) }),
     },
   };
 }
