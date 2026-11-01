@@ -11,7 +11,7 @@ export type PostMeta = {
   excerpt: string;
   pdfLink?: string;
 
-  isFullArticale:string | undefined;
+  isFullArticale?:string | undefined;
 };
 
 /** תקציר קצר לכרטיסיות (מספר מילים) */
