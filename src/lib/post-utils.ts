@@ -10,6 +10,8 @@ export type PostMeta = {
   /** תקציר ארוך (מתוך ה-frontmatter או הפסקה הראשונה) */
   excerpt: string;
   pdfLink?: string;
+
+  isFullArticale:string;
 };
 
 /** תקציר קצר לכרטיסיות (מספר מילים) */

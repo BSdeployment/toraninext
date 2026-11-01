@@ -11,7 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function ArticlesPage() {
-  const posts = getAllPosts();
+ const posts = getAllPosts().filter(
+  (a) => a.isFullArticale === undefined || a.isFullArticale === "true"
+);
+
+
+
+  
+
+
   const totalPages = Math.max(1, Math.ceil(posts.length / siteConfig.postsPerPage));
   return (
     <div className="container">
