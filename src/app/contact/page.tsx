@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import { siteConfig } from "@/config/site";
+import MailerLiteForm from "@/components/MailerLiteForm";
 
 export const metadata: Metadata = {
   title: "יצירת קשר",
@@ -13,7 +14,9 @@ export default function ContactPage() {
   return (
     <div className="container">
       {/* טופס הרשמה של MailerLite (הסקריפט נטען ב-layout.tsx) */}
-      <div className="ml-embedded" data-form={mailerLite.formId} />
+     
+
+     <MailerLiteForm/>
 
       <FadeIn className="contact-info contact-info--centered">
         <h1 className="page-title">יצירת קשר</h1>
