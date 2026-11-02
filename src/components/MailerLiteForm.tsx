@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
-import '../styles/MailerLiteForm.css'
+import '../styles/MailerLiteForm.css';
 
 declare global {
   interface Window {
@@ -13,6 +13,7 @@ declare global {
 
 export default function MailerLiteForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     window.ml_webform_success_44977753 = () => {
@@ -25,7 +26,8 @@ export default function MailerLiteForm() {
   }, []);
 
   return (
-    <>
+    <section className="newsletter-section" dir="rtl">
+
       <Script
         src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519"
         strategy="afterInteractive"
@@ -36,80 +38,129 @@ export default function MailerLiteForm() {
         }}
       />
 
-      <div
-        id="mlb2-44977753"
-        className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44977753"
+      <button
+        type="button"
+        className={`newsletter-toggle ${isOpen ? 'is-open' : ''}`}
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+        aria-controls="newsletter-content"
       >
-        <div className="ml-form-align-center">
-          <div className="ml-form-embedWrapper embedForm">
+        <span className="newsletter-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M4 5.5h16v13H4z"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinejoin="round"
+            />
+            <path
+              d="m5 7 7 5.5L19 7"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
 
-            {!submitted ? (
-              <div className="ml-form-embedBody ml-form-embedBodyDefault">
+        <span className="newsletter-text">
+          <strong>הרשמה לרשימת התפוצה</strong>
+          <small>
+            קבלו את העלון השבועי ישירות למייל שלכם
+          </small>
+        </span>
 
-                <div className="ml-form-embedContent">
-                  <h2>הרשמה לרשימת התפוצה</h2>
+        <span className="newsletter-arrow">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="m7 10 5 5 5-5"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </button>
 
-                  <p>
-                    להרשם לקבלת העלון מדי שבוע במייל.
-                    הזן כתובת מייל ולחץ הרשם.
-                    שימו לב, ייתכן שהמייל יישלח לאזור הספאם.
-                  </p>
-                </div>
+      <div
+        id="newsletter-content"
+        className={`newsletter-content ${isOpen ? 'is-open' : ''}`}
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+      >
+        <div className="newsletter-inner">
 
-                <form
-                  className="ml-block-form"
-                  action="https://assets.mailerlite.com/jsonp/2584082/forms/196209443631794003/subscribe"
-                  method="post"
-                  target="_blank"
-                >
-                  <div className="ml-form-formContent">
-                    <div className="ml-form-fieldRow ml-last-item">
-                      <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                        <input
-                          aria-label="email"
-                          aria-required="true"
-                          type="email"
-                          name="fields[email]"
-                          placeholder="כתובת מייל"
-                          autoComplete="email"
-                          required
-                        />
-                      </div>
+          {!submitted ? (
+            <div className="ml-form-embedBody ml-form-embedBodyDefault">
+
+              <div className="ml-form-embedContent">
+                <h2>הצטרפו לרשימת התפוצה</h2>
+
+                <p>
+                  הירשמו לקבלת העלון השבועי של אבן שלמה
+                  ועדכונים חדשים ישירות לתיבת המייל שלכם.
+                </p>
+              </div>
+
+              <form
+                className="ml-block-form"
+                action="https://assets.mailerlite.com/jsonp/2584082/forms/196209443631794003/subscribe"
+                method="post"
+                target="_blank"
+              >
+                <div className="ml-form-formContent">
+                  <div className="ml-form-fieldRow ml-last-item">
+                    <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                      <input
+                        aria-label="כתובת מייל"
+                        aria-required="true"
+                        type="email"
+                        name="fields[email]"
+                        placeholder="כתובת מייל"
+                        autoComplete="email"
+                        required
+                      />
                     </div>
                   </div>
-
-                  <input type="hidden" name="ml-submit" value="1" />
-                  <input type="hidden" name="anticsrf" value="true" />
-
-                  <div className="ml-form-embedSubmit">
-                    <button type="submit">הרשם</button>
-                  </div>
-                </form>
-              </div>
-            ) : (
-              <div className="ml-form-successBody">
-                <div className="ml-form-successContent">
-                  <div className="ml-success-icon">✉</div>
-
-                  <h2>ההרשמה הסתיימה בהצלחה</h2>
-
-                  <p>
-                    שימו לב! להשלמת התהליך יש להיכנס למייל
-                    שלכם ולאשר את ההרשמה, בכדי לאמת את כתובת המייל.
-                  </p>
-
-                  <hr />
-
-                  <p>
-                    אבן שלמה - לע"נ שלמה בן חסיבה זצ"ל
-                  </p>
                 </div>
-              </div>
-            )}
 
-          </div>
+                <input type="hidden" name="ml-submit" value="1" />
+                <input type="hidden" name="anticsrf" value="true" />
+
+                <div className="ml-form-embedSubmit">
+                  <button type="submit">הרשמה לרשימת התפוצה</button>
+                </div>
+              </form>
+
+              <p className="newsletter-note">
+                שימו לב: ייתכן שהמייל יגיע לתיקיית הספאם.
+              </p>
+            </div>
+          ) : (
+            <div className="ml-form-successBody">
+              <div className="ml-form-successContent">
+                <div className="ml-success-icon">✉</div>
+
+                <h2>ההרשמה הסתיימה בהצלחה!</h2>
+
+                <p>
+                  להשלמת התהליך יש להיכנס למייל שלכם
+                  ולאשר את ההרשמה כדי לאמת את כתובת המייל.
+                </p>
+
+                <hr />
+
+                <p>
+                  אבן שלמה - לע"נ שלמה בן חסיבה זצ"ל
+                </p>
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
-    </>
+
+    </section>
   );
 }

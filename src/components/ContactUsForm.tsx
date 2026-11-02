@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import styles from '../styles/contactUsForm.module.css'
+import styles from '../styles/contactUsForm.module.css';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
@@ -18,6 +19,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const form = event.currentTarget;
     setStatus('sending');
 
@@ -29,6 +31,7 @@ export default function ContactForm() {
         method: 'POST',
         body: formData,
       });
+
       const data: Web3FormsResponse = await response.json();
 
       if (data.success) {
@@ -45,77 +48,112 @@ export default function ContactForm() {
   const isSending = status === 'sending';
 
   return (
-    <main className={styles.page} dir="rtl" lang="he">
-      <div className={styles.card}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>כל פנייה, הערה והארה תתקבל בברכה</h1>
-        </header>
-
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.field}>
-            <input
-              className={styles.input}
-              type="text"
-              id="name"
-              name="name"
-              placeholder=" "
-              autoComplete="name"
-              required
+    <section className={styles.card} aria-labelledby="contact-form-title">
+      <div className={styles.header}>
+        <div className={styles.icon}>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M4 5.5h16v13H4z"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinejoin="round"
             />
-            <label className={styles.label} htmlFor="name">
-              שם
-            </label>
-          </div>
-
-          <div className={styles.field}>
-            <input
-              className={styles.input}
-              type="email"
-              id="email"
-              name="email"
-              placeholder=" "
-              autoComplete="email"
-              dir="ltr"
-              style={{ textAlign: 'right' }}
-              required
+            <path
+              d="m5 7 7 5.5L19 7"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-            <label className={styles.label} htmlFor="email">
-              כתובת מייל
-            </label>
-          </div>
+          </svg>
+        </div>
 
-          <div className={styles.field}>
-            <textarea
-              className={`${styles.input} ${styles.textarea}`}
-              id="message"
-              name="message"
-              placeholder=" "
-              rows={6}
-              required
-            />
-            <label className={styles.label} htmlFor="message">
-              הודעה
-            </label>
-          </div>
+        <h2 id="contact-form-title" className={styles.title}>
+          שליחת הודעה
+        </h2>
 
-          <button className={styles.button} type="submit" disabled={isSending}>
-            {isSending ? 'שולח…' : 'שליחה'}
-          </button>
-
-          <div aria-live="polite">
-            {status === 'success' && (
-              <p className={`${styles.status} ${styles.success}`}>
-                ההודעה נשלחה בהצלחה, תודה!
-              </p>
-            )}
-            {status === 'error' && (
-              <p className={`${styles.status} ${styles.error}`}>
-                השליחה נכשלה. נסו שוב בעוד רגע.
-              </p>
-            )}
-          </div>
-        </form>
+        <p className={styles.description}>
+          יש לכם שאלה, הערה או הארה?
+          <br />
+          נשמח לקבל מכם הודעה ולחזור אליכם.
+        </p>
       </div>
-    </main>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="contact-name">
+            שם מלא
+          </label>
+          <input
+            className={styles.input}
+            type="text"
+            id="contact-name"
+            name="name"
+            placeholder="הקלידו את שמכם"
+            autoComplete="name"
+            required
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="contact-email">
+            כתובת מייל
+          </label>
+          <input
+            className={styles.input}
+            type="email"
+            id="contact-email"
+            name="email"
+            placeholder="example@mail.com"
+            autoComplete="email"
+            dir="ltr"
+            required
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="contact-message">
+            תוכן ההודעה
+          </label>
+          <textarea
+            className={`${styles.input} ${styles.textarea}`}
+            id="contact-message"
+            name="message"
+            placeholder="כתבו כאן את הודעתכם..."
+            rows={5}
+            required
+          />
+        </div>
+
+        <button
+          className={styles.button}
+          type="submit"
+          disabled={isSending}
+        >
+          {isSending ? (
+            <>
+              <span className={styles.spinner} />
+              שולח הודעה...
+            </>
+          ) : (
+            'שליחת הודעה'
+          )}
+        </button>
+
+        <div aria-live="polite">
+          {status === 'success' && (
+            <p className={`${styles.status} ${styles.success}`}>
+              ✓ ההודעה נשלחה בהצלחה, תודה רבה!
+            </p>
+          )}
+
+          {status === 'error' && (
+            <p className={`${styles.status} ${styles.error}`}>
+              השליחה נכשלה. נסו שוב בעוד רגע.
+            </p>
+          )}
+        </div>
+      </form>
+    </section>
   );
 }
