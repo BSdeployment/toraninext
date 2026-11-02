@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import { siteConfig } from "@/config/site";
 import MailerLiteForm from "@/components/MailerLiteForm";
+import ContactForm from "@/components/ContactUsForm";
 
 export const metadata: Metadata = {
   title: "יצירת קשר",
@@ -17,6 +18,10 @@ export default function ContactPage() {
      
 
      <MailerLiteForm/>
+
+     <div>
+        <ContactForm/>
+     </div>
 
       <FadeIn className="contact-info contact-info--centered">
         <h1 className="page-title">יצירת קשר</h1>
