@@ -15,7 +15,11 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const latestPosts = getAllPosts().slice(0, 3);
+  // const latestPosts = getAllPosts().slice(0, 3);
+const latestPosts = getAllPosts()
+  .filter((a) => a.isFullArticle === undefined || a.isFullArticle === "true")
+  .slice(0, 3);
+
   const featuredBooks = books.slice(0, 3);
 
   return (
