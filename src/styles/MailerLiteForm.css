@@ -270,3 +270,52 @@
     font-size: 19px;
   }
 }
+
+
+/* הודעת הצלחה מותאמת אישית */
+
+.newsletter-section .ml-form-successContent {
+  text-align: center;
+  padding: 12px 5px;
+}
+
+.newsletter-section .ml-success-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #edf8f1;
+  color: #268653;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.newsletter-section .ml-form-successContent h2 {
+  margin: 0 0 14px;
+  color: #294c78;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.newsletter-section .ml-form-successContent p {
+  color: #78869a;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.newsletter-section .ml-form-successContent strong {
+  color: #345477;
+}
+
+.newsletter-success-note {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #f4f6fb;
+  color: #71809a;
+  font-size: 13px;
+  line-height: 1.8;
+}

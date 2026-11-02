@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import '../styles/MailerLiteForm.css';
 
@@ -15,15 +15,29 @@ export default function MailerLiteForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  const submissionStarted = useRef(false);
+
   useEffect(() => {
     window.ml_webform_success_44977753 = () => {
       setSubmitted(true);
+      submissionStarted.current = false;
     };
 
     return () => {
       delete window.ml_webform_success_44977753;
     };
   }, []);
+
+  const handleSubmit = () => {
+    submissionStarted.current = true;
+  };
+
+  const handleIframeLoad = () => {
+    if (submissionStarted.current) {
+      submissionStarted.current = false;
+      setSubmitted(true);
+    }
+  };
 
   return (
     <section className="newsletter-section" dir="rtl">
@@ -37,6 +51,17 @@ export default function MailerLiteForm() {
           ).catch(console.error);
         }}
       />
+
+      {/* iframe מוסתר לקבלת תשובת MailerLite */}
+
+      <iframe
+        name="mailerLiteResponseFrame"
+        title="תשובת הרשמה"
+        style={{ display: 'none' }}
+        onLoad={handleIframeLoad}
+      />
+
+      {/* כפתור פתיחת האקורדיון */}
 
       <button
         type="button"
@@ -83,6 +108,8 @@ export default function MailerLiteForm() {
         </span>
       </button>
 
+      {/* תוכן האקורדיון */}
+
       <div
         id="newsletter-content"
         className={`newsletter-content ${isOpen ? 'is-open' : ''}`}
@@ -92,6 +119,7 @@ export default function MailerLiteForm() {
         <div className="newsletter-inner">
 
           {!submitted ? (
+
             <div className="ml-form-embedBody ml-form-embedBodyDefault">
 
               <div className="ml-form-embedContent">
@@ -107,7 +135,8 @@ export default function MailerLiteForm() {
                 className="ml-block-form"
                 action="https://assets.mailerlite.com/jsonp/2584082/forms/196209443631794003/subscribe"
                 method="post"
-                target="_blank"
+                target="mailerLiteResponseFrame"
+                onSubmit={handleSubmit}
               >
                 <div className="ml-form-formContent">
                   <div className="ml-form-fieldRow ml-last-item">
@@ -129,7 +158,9 @@ export default function MailerLiteForm() {
                 <input type="hidden" name="anticsrf" value="true" />
 
                 <div className="ml-form-embedSubmit">
-                  <button type="submit">הרשמה לרשימת התפוצה</button>
+                  <button type="submit">
+                    הרשמה לרשימת התפוצה
+                  </button>
                 </div>
               </form>
 
@@ -137,25 +168,47 @@ export default function MailerLiteForm() {
                 שימו לב: ייתכן שהמייל יגיע לתיקיית הספאם.
               </p>
             </div>
+
           ) : (
+
+            /* הודעת הצלחה אישית */
+
             <div className="ml-form-successBody">
               <div className="ml-form-successContent">
-                <div className="ml-success-icon">✉</div>
 
-                <h2>ההרשמה הסתיימה בהצלחה!</h2>
+                <div className="ml-success-icon">
+                  ✓
+                </div>
+
+                <h2>נרשמתם בהצלחה!</h2>
 
                 <p>
-                  להשלמת התהליך יש להיכנס למייל שלכם
-                  ולאשר את ההרשמה כדי לאמת את כתובת המייל.
+                  תודה שהצטרפתם לרשימת התפוצה של אבן שלמה.
                 </p>
+
+                <p>
+                  <strong>
+                    נשלח אליכם מייל לאישור ההרשמה.
+                  </strong>
+                  <br />
+                  יש להיכנס לתיבת המייל וללחוץ על קישור האישור
+                  כדי להשלים את תהליך ההרשמה.
+                </p>
+
+                <div className="newsletter-success-note">
+                  לא מצאתם את המייל?
+                  כדאי לבדוק גם בתיקיית הספאם.
+                </div>
 
                 <hr />
 
                 <p>
-                  אבן שלמה - לע"נ שלמה בן חסיבה זצ"ל
+                  אבן שלמה – לע"נ שלמה בן חסיבה זצ"ל
                 </p>
+
               </div>
             </div>
+
           )}
 
         </div>
